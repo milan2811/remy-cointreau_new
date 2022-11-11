@@ -1,0 +1,428 @@
+@php
+$category = $terms->where('type', 'category')->pluck('name', 'id')->toArray();
+$brands = $terms->where('type', 'brands')->pluck('name', 'id')->toArray();;
+$ingredients = $terms->where('type', 'ingredients')->pluck('name', 'id')->toArray();;
+// foreach ($terms as $term) {
+//     if ($term->type == 'category') {
+//         $category[$term->id] = $term->name;
+//     }
+//     if ($term->type == 'ingredients') {        
+//         $ingredients[$term->id] = $term->name;
+//     }
+//     if ($term->type == 'brands') {
+//         $brands[$term->id] = $term->name;
+//     }
+// }
+
+// $bars = [];
+// $bars[''] = 'Select Bar';
+// foreach ($barsList as $bar) {
+//     $bars[$bar->id] = $bar->name;
+// }
+
+@endphp
+
+{!! Form::hidden('bar_id', $selectedBar) !!}
+
+<div class="form-group">
+{!! Form::label('name', 'Name') !!}
+<div class="input-group">
+    {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'name', 'placeholder' => 'Enter Item Name', 'required' => true, 'autocomplete' => 'off', "disabled" => (request()->has('analytics') && request()->get('analytics'))]) !!}
+</div>
+@error('name')
+    <span class="invalid-feedback d-block" role="alert">
+    <strong>{{ $message }}</strong>
+    </span>
+@enderror
+</div>
+
+<div class="form-group">
+{!! Form::label('description', 'Description') !!}
+<div class="input-group">
+    {!! Form::textarea('description', null, ['class' => ((request()->has('analytics') && request()->get('analytics')) ? 'form-control' : 'form-control summernote-description'), 'id' => 'description', 'placeholder' => 'Enter Item Description here...', "disabled" => (request()->has('analytics') && request()->get('analytics'))]) !!}
+</div>
+@error('description')
+    <span class="invalid-feedback d-block" role="alert">
+    <strong>{{ $message }}</strong>
+    </span>
+@enderror
+</div>              
+
+<div class="form-group">
+{!! Form::label('category', 'Category Drink') !!}
+<div class="input-group">
+    {!! Form::select('category_id', $category, $item ? $item->category_id : null, ['class' => 'form-control select2', 'id' => 'category', 'data-placeholder' => 'Select Category', 'required' => true, "disabled" => (request()->has('analytics') && request()->get('analytics'))]) !!}
+</div>
+@error('category_id')
+    <span class="invalid-feedback d-block" role="alert">
+    <strong>{{ $message }}</strong>
+    </span>
+@enderror
+</div>
+
+<div class="form-group">
+    {!! Form::label('non-alcholic-ingredients', 'Ingredients (Non - Alcholic)') !!}
+    <div class="input-group">
+        {!! Form::select('non_alcholic_ingredients[]', $ingredients, ($item ? $nonAlcholicIngredients : []), ['class' => 'form-control select2','data-placeholder' => 'Select Ingredients', 'placeholder' => 'Select Ingredients', 'multiple' => true, 'required' => true, "disabled" => (request()->has('analytics') && request()->get('analytics'))]) !!}
+    </div>
+    @error('non_alcholic_ingredients')
+        <span class="invalid-feedback d-block" role="alert">
+        <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+</div>
+
+<div class="row">
+<div class="col-3">
+    {!! Form::label('ingredients', 'Select Ingredients (Alcholic)') !!}
+</div>
+<div class="col-3">
+    {!! Form::label('ingredient_category', 'Select Category') !!}
+</div>
+<div class="col-3">
+    {!! Form::label('brand', 'Select Brand') !!}
+</div>
+<div class="col-2">
+    {!! Form::label('brand', 'Products') !!}
+</div>
+</div>
+<div class="ingredients-container">              
+@if (!$item)                                    
+
+<div class="row">
+    <div class="col-3">                  
+    <div class="form-group">
+        <div class="input-group">
+        {!! Form::select('ingredients[]', $ingredients, null, ['class' => 'form-control custom-select2 ingredients', 'data-placeholder' => 'Select Ingredients','placeholder' => 'Select Ingredients', 'required' => true, "disabled" => (request()->has('analytics') && request()->get('analytics'))]) !!}
+        </div>
+        @error('ingredients')
+        <span class="invalid-feedback d-block" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+    </div>           
+    <div class="col-3 category">
+        <div class="form-group">            
+            <div class="input-group">
+                {!! Form::select('ingredient_category[]', $category, null, ['class' => 'form-control custom-select2', 'placeholder' => 'Select Category', "disabled" => (request()->has('analytics') && request()->get('analytics'))]) !!}
+            </div>
+            @error('ingredient_category')
+                <span class="invalid-feedback d-block" role="alert">
+                <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+    </div>   
+    <div class="col-3 brands">
+    <div class="form-group">                    
+        <div class="input-group">
+        {!! Form::select('brand[]', $brands, null, ['class' => 'form-control custom-select2 parent-brand', 'placeholder' => 'Select Brand', "disabled" => (request()->has('analytics') && request()->get('analytics'))]) !!}
+        </div>                    
+    </div>
+    </div>              
+    <div class="col-2 brands">
+    <div class="form-group">                    
+        <div class="input-group">
+        {!! Form::select('brand[]', [], null, ['class' => 'form-control custom-select2 child-brand', 'placeholder' => 'Select Sub Brand', "disabled" => (request()->has('analytics') && request()->get('analytics'))]) !!}
+        </div>                    
+    </div>
+    </div>              
+    <div class="col-1">
+    <div class="form-group">
+        <a href="javascript:void(0)" class="btn btn-danger add-ingredient">+</a>
+    </div>
+    </div>              
+</div>
+
+@else
+@php
+    $brandsIndex = 0;
+@endphp
+@foreach ($selectedIngredients as $index=>$ingredient)
+
+<div class="row">
+    <div class="col-3">                  
+    <div class="form-group">
+        <div class="input-group">
+        {!! Form::select('ingredients[]', $ingredients, $ingredient['id'], ['class' => 'form-control custom-select2 ingredients', 'data-placeholder' => 'Select Ingredients','placeholder' => 'Select Ingredients', 'required' => true, "disabled" => (request()->has('analytics') && request()->get('analytics'))]) !!}
+        </div>
+        @error('ingredients')
+        <span class="invalid-feedback d-block" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+    </div>   
+    <div class="col-3 category">
+        <div class="form-group">            
+            <div class="input-group">
+                {!! Form::select('ingredient_category[]', $category, (isset($selectedCategory[$index]) ? $selectedCategory[$index]->id : null), ['class' => 'form-control custom-select2', 'placeholder' => 'Select Category', "disabled" => (request()->has('analytics') && request()->get('analytics'))]) !!}
+            </div>
+            @error('ingredient_category')
+                <span class="invalid-feedback d-block" role="alert">
+                <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+    </div>              
+    <div class="col-3 brands">
+    <div class="form-group">                    
+        <div class="input-group">                        
+        {!! Form::select('brand[]', $brands, (isset($selectedBrands[$brandsIndex]) ? $selectedBrands[$brandsIndex]->id : null), ['class' => 'form-control custom-select2 parent-brand', 'placeholder' => 'Select Brand', "disabled" => (request()->has('analytics') && request()->get('analytics'))]) !!}                                                
+        </div>                    
+    </div>
+    </div>              
+    <div class="col-2 brands">
+    <div class="form-group">                    
+        <div class="input-group">            
+        <select name="brand[]" class="form-control custom-select2 child-brand" placeholder="Select Sub Brand" {{ request()->has('analytics') && request()->get('analytics') ? 'disabled' : null }}>
+            <option value="">Select Sub Brands</option>     
+            @if (isset($selectedBrands[$brandsIndex]) && $selectedBrands[$brandsIndex]->children)
+            @foreach ($selectedBrands[$brandsIndex]->children as $child)
+                <option value="{{$child->id}}" {{ isset($selectedBrands[$brandsIndex + 1]) && $selectedBrands[$brandsIndex + 1]->id == $child->id ? 'selected' : null}}>{{$child->name}}</option>                                                
+            @endforeach 
+            @endif  
+            @php
+                $brandsIndex = $brandsIndex + 2;
+            @endphp            
+        </select>                        
+        {{-- {!! Form::select('brand[]', [ (isset($childBrands[$index]) ? $childBrands[0]['name'] : 0) => (isset($childBrands[$index]) ? $childBrands[0]['name'] : 0)], $childBrands[$index]->id, ["disabled" => (request()->has('analytics') && request()->get('analytics'))]) !!} --}}
+        </div>                    
+    </div>
+    </div>              
+    <div class="col-1">
+    <div class="form-group">
+        <a href="javascript:void(0)" 
+        class="btn {{$index == 0 ? 'btn-danger add-ingredient' : 'btn-secondary remove-ingredient'}}">
+        {{ $index == 0 ? '+' : '-' }}
+    </a>
+    </div>
+    </div>                  
+</div>
+@endforeach                  
+@endif
+</div>
+
+<div class="form-group">
+{!! Form::label('Upload Media') !!}
+{!! Form::hidden('media_type', 'image') !!}
+<!-- Nav tabs -->
+<ul class="nav nav-tabs justify-content-around">
+    <li class="nav-item w-50 text-center">
+    <a class="nav-link active" data-toggle="tab" href="#media1" data-type="image">
+        Image
+    </a>
+    </li>
+    {{-- <li class="nav-item w-50 text-center">
+<a class="nav-link" data-toggle="tab" href="#media2" data-type="video">
+    Video
+</a>
+</li> --}}
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content media-type-container">
+    <div id="media1" class="tab-pane mt-2 active">
+    {!! Form::label('upload-image', 'Upload Image') !!}
+    {!! Form::file('images[]', ['class' => 'form-control', 'id' => 'upload-image', 'multiple' => true, 'accept' => 'image/*', "disabled" => (request()->has('analytics') && request()->get('analytics'))]) !!}
+    </div>
+    <div id="media2" class="tab-pane mt-2 fade">
+    {!! Form::label('upload-video', 'Upload Video') !!}
+    {!! Form::file('video', ['class' => 'form-control', 'id' => 'upload-video', 'accept' => 'video/*', "disabled" => (request()->has('analytics') && request()->get('analytics'))]) !!}
+    </div>
+</div>
+
+
+<div class="container">
+    <table class="table" id="price-repeater">
+        <thead>
+            <tr>
+            <th>Quantity
+                @error('quantity')
+                    <span class="invalid-feedback d-block" role="alert">
+                    <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </th>
+            <th>Price
+                @error('price')
+                <span class="invalid-feedback d-block" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </th>
+            <th style="width:1%"></th>
+            </tr>
+        </thead>
+        <tbody>
+        @if (isset($item) && isset($item->price) && !empty($item->price))
+            @php
+                $prices = json_decode($item->price);
+            @endphp
+            @foreach ($prices->price as $index=>$price)                         
+                <tr>
+                <td>
+                    <div class="form-group">
+                    <div class="input-group">
+                        {!! Form::text('price[quantity][]', $prices->quantity[$index], ['class' => 'form-control', 'placeholder' => 'Enter Quantity', 'required' => true, "disabled" => (request()->has('analytics') && request()->get('analytics'))]) !!}
+                    </div>                          
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                    <div class="input-group">
+                        {!! Form::text('price[price][]', $prices->price[$index], ['class' => 'form-control', 'placeholder' => 'Enter Price', 'required' => true, 'autocomplete' => 'off', "disabled" => (request()->has('analytics') && request()->get('analytics'))]) !!}
+                    </div>                                
+                    </div>      
+                </td>
+                <td>
+                    @if ($index == 0)
+                    <a href="javascript:void(0)" class="btn btn-success" id="add-price">+</a>
+                    @else
+                    <a href="javascript:void(0)" class="btn btn-secondary remove-price">-</a> 
+                    @endif
+                </td>
+                </tr>
+            @endforeach
+        @else 
+        
+            <tr>
+            <td>
+                <div class="form-group">
+                <div class="input-group">
+                    {!! Form::text('price[quantity][]', null, ['class' => 'form-control', 'placeholder' => 'Enter Quantity', 'required' => true, "disabled" => (request()->has('analytics') && request()->get('analytics'))]) !!}
+                </div>                          
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                <div class="input-group">
+                    {!! Form::text('price[price][]', null, ['class' => 'form-control', 'placeholder' => 'Enter Price', 'required' => true, 'autocomplete' => 'off', "disabled" => (request()->has('analytics') && request()->get('analytics'))]) !!}
+                </div>                            
+                </div>      
+            </td>
+            <td>
+                <a href="javascript:void(0)" class="btn btn-success" id="add-price">+</a>
+            </td>
+            </tr>
+        @endif
+        </tbody>
+    </table>
+</div>
+{{-- <div class="row" id="price-repeater">
+    <div class="col-5">
+        <div class="form-group">
+        {!! Form::label('price', 'Price') !!}
+        <div class="input-group">
+            {!! Form::text('price', null, ['class' => 'form-control', 'id' => 'price', 'placeholder' => 'Enter Price', 'required' => true]) !!}
+        </div>
+        @error('price')
+            <span class="invalid-feedback d-block" role="alert">
+            <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="form-group">
+        {!! Form::label('sale_price', 'Sale Price') !!}
+        <div class="input-group">
+            {!! Form::text('sale_price', null, ['class' => 'form-control', 'id' => 'sale_price', 'placeholder' => 'Enter Sale Price', 'required' => true, 'autocomplete' => 'off']) !!}
+        </div>
+        @error('sale_price')
+            <span class="invalid-feedback d-block" role="alert">
+            <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+        </div>
+    </div>
+    <div class="col-2">
+        <button class="btn btn-success">+</button>
+    </div>
+</div>
+</div> --}}
+
+
+@section('scripts')
+  <script>
+    $(function() {
+      
+      const INGREDIENT_ROW = $(".ingredients-container .row").first().html().replaceAll("btn-danger add", "btn-secondary remove").replace("+", "-");      
+      
+      $('.form-group .nav-link').click((e) => {
+        $('input[name="media_type"]').val($(e.target).data('type'));
+      });      
+
+      $(".custom-select2").select2({
+        theme: 'bootstrap4',
+        escapeMarkup: function(markup) {
+          return markup;
+        }
+      });
+      $(document).on("click",".add-ingredient", (e) => {
+        $(".ingredients-container").append('<div class="row">'+INGREDIENT_ROW+'</div>');        
+        $(".custom-select2").select2({
+            theme: 'bootstrap4',
+            escapeMarkup: function(markup) {
+            return markup;
+            }
+        });
+        $(".ingredients-container .row:last select").val('').trigger('change');
+      });
+
+      $(document).on("click",".remove-ingredient", (e) => {
+        $(e.target).closest(".row").remove();
+      });
+
+      $(document).on("change", "select.parent-brand", (e) => {
+        if(e.target.value == '') {
+          return $(e.target).closest('.row').find("select.child-brand").html('<option value="">Select Sub Brand</option>');
+        }
+        $.ajax({
+          url:`{!! route('term.getchildren') !!}?id=${e.target.value}`,
+          method:'GET',
+          body: {
+            id:e.target.value,
+          },
+          success:function(result) {
+            if(result.success == 1) {
+              let html = '<option value="">Select Sub Brand</option>';                          
+              $.each(result.terms, (index, term) => {
+                html += `<option value="${index}">${term}</option>`;
+              });              
+              $(e.target).closest('.row').find("select.child-brand").html(html);
+            }
+          },
+          error:function(err) {
+            console.error(err)
+          }
+        });
+      });
+
+    });
+
+
+    // $('.bar-select').change(function(e) {
+    //   e.preventDefault();
+    //   getCate($(this).val());
+    // });
+
+    // function getCate(bar_id) {
+    //   $.ajax({
+    //     headers: {
+    //       'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+    //     },
+    //     type: "post",
+    //     dataType: "json",
+    //     url: "{{ route('get.items.category') }}",
+    //     data: {
+    //       bar_id: bar_id
+    //     },
+    //     success: function(res) {
+    //       $('#cate-and-in').html(res.data);
+    //     }
+    //   });
+    // }
+  </script>
+@endsection

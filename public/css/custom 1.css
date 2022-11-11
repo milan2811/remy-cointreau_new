@@ -1,0 +1,133 @@
+
+@font-face {
+  font-family: 'Akkurat Cointreau';
+  src: url('../fonts/AkkuratCointreau-BoldItalic.eot');
+  src: url('../fonts/AkkuratCointreau-BoldItalic.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/AkkuratCointreau-BoldItalic.woff2') format('woff2'),
+      url('../fonts/AkkuratCointreau-BoldItalic.woff') format('woff'),
+      url('../fonts/AkkuratCointreau-BoldItalic.ttf') format('truetype'),
+      url('../fonts/AkkuratCointreau-BoldItalic.svg#AkkuratCointreau-BoldItalic') format('svg');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Akkurat Cointreau';
+  src: url('../fonts/AkkuratCointreau-Bold.eot');
+  src: url('../fonts/AkkuratCointreau-Bold.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/AkkuratCointreau-Bold.woff2') format('woff2'),
+      url('../fonts/AkkuratCointreau-Bold.woff') format('woff'),
+      url('../fonts/AkkuratCointreau-Bold.ttf') format('truetype'),
+      url('../fonts/AkkuratCointreau-Bold.svg#AkkuratCointreau-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NimbusSanConD';
+  src: url('../fonts/NimbusSanConD-Bol.eot');
+  src: url('../fonts/NimbusSanConD-Bol.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/NimbusSanConD-Bol.woff2') format('woff2'),
+      url('../fonts/NimbusSanConD-Bol.woff') format('woff'),
+      url('../fonts/NimbusSanConD-Bol.ttf') format('truetype'),
+      url('../fonts/NimbusSanConD-Bol.svg#NimbusSanConD-Bol') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Akkurat Cointreau';
+  src: url('../fonts/AkkuratCointreau-Regular.eot');
+  src: url('../fonts/AkkuratCointreau-Regular.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/AkkuratCointreau-Regular.woff2') format('woff2'),
+      url('../fonts/AkkuratCointreau-Regular.woff') format('woff'),
+      url('../fonts/AkkuratCointreau-Regular.ttf') format('truetype'),
+      url('../fonts/AkkuratCointreau-Regular.svg#AkkuratCointreau-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body { font-family: 'Akkurat Cointreau', Arial, Helvetica, sans-serif; font-weight: normal; color: #072C4E; }
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 { font-family: 'NimbusSanConD', Arial, Helvetica, sans-serif; font-weight: bold; }
+
+a, a:hover { color: #FF4713; }
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active { background-color: #FF4713; }
+
+[class*="sidebar-dark-"] { background-color: #072C4E; }
+
+.nav-sidebar .nav-item > .nav-link .right { transform: rotate(180deg); }
+.nav-sidebar .menu-open > .nav-link i.right, .nav-sidebar .menu-is-opening > .nav-link i.right { -webkit-transform: rotate(270deg); transform: rotate(270deg); }
+
+a.text-muted:hover { color: #FF4713 !important; }
+
+/* Button CSS */
+.btn { box-shadow: none !important; }
+.btn-outline-primary { color: #FF4713; border-color: #FF4713; }
+.btn-outline-primary:hover { background-color: #FF4713; border-color: #FF4713; }
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active, .show > .btn-outline-primary.dropdown-toggle { background-color: #FF4713; border-color: #FF4713; }
+
+.btn-secondary { background-color: #072C4E; border-color: #072C4E; }
+.btn-secondary:hover { background-color: #072847; border-color: #072847; }
+.btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active, .show > .btn-secondary.dropdown-toggle { background-color: #041d35; border-color: #041d35; }
+.btn-secondary:focus, .btn-secondary.focus { background-color: #093661; border-color: #093661; }
+div.dataTables_wrapper div.dt-buttons.btn-group div.btn-group:last-child { border-color: #072C4E; }
+
+.btn-success { background-color: #FF4713; border-color: #FF4713; }
+.btn-success:hover { background-color: #df3b0e; border-color: #df3b0e; }
+.btn-outline-success { color: #FF4713; border-color: #FF4713; }
+.btn-outline-success:hover { color: #fff; background-color: #FF4713; border-color: #FF4713; }
+.btn-success:focus, .btn-success.focus { background-color: #bd320c; border-color: #bd320c; box-shadow: 0 0 0 0.2rem rgba(255, 71, 19, 0.5); }
+.btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active, .show > .btn-success.dropdown-toggle { background-color: #bd320c; border-color: #bd320c; }
+.btn-success:not(:disabled):not(.disabled):active:focus, .btn-success:not(:disabled):not(.disabled).active:focus, .show > .btn-success.dropdown-toggle:focus { box-shadow: 0 0 0 0.2rem rgba(255, 71, 19, 0.5); }
+
+.btn-outline-success:focus, .btn-outline-success.focus { box-shadow: 0 0 0 0.2rem rgba(255, 71, 19, 0.5); }
+.btn-outline-success:not(:disabled):not(.disabled):active, .btn-outline-success:not(:disabled):not(.disabled).active, .show > .btn-outline-success.dropdown-toggle { background-color: #bd320c; border-color: #bd320c; }
+.btn-outline-success:not(:disabled):not(.disabled):active:focus, .btn-outline-success:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-success.dropdown-toggle:focus { box-shadow: 0 0 0 0.2rem rgba(255, 71, 19, 0.5); }
+
+
+
+.page-link { color: #FF4713; box-shadow: none !important; }
+.page-link:hover { color: #FF4713; }
+.page-item.active .page-link { background-color: #FF4713; border-color: #FF4713; }
+
+
+
+/* Input */
+.form-control:focus { box-shadow: 0 0 0 0.2rem rgba(7, 44, 78, 0.25); }
+.select2-container--bootstrap4.select2-container--focus .select2-selection { box-shadow: 0 0 0 0.2rem rgba(7, 44, 78, 0.25); }
+
+footer.main-footer p {
+  color: #212529;
+}
+footer.main-footer .powered-text {
+  display: flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+.powered-text a {
+  display: block;
+  max-width: 70px;
+  margin: 0px 0 0 4px;
+  opacity: 0.5;
+  transition: 350ms all;
+}
+.powered-text a img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+.powered-text a:hover {
+  opacity: 1;
+}
+.sidebar .nav-link p {
+  font-size: 1rem;
+}
+
+td img.img-circle.img-size-32 {
+  height: 32px;
+}

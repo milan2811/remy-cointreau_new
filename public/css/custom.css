@@ -1,0 +1,194 @@
+
+@font-face {
+  font-family: 'Akkurat Cointreau';
+  src: url('../fonts/AkkuratCointreau-BoldItalic.eot');
+  src: url('../fonts/AkkuratCointreau-BoldItalic.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/AkkuratCointreau-BoldItalic.woff2') format('woff2'),
+      url('../fonts/AkkuratCointreau-BoldItalic.woff') format('woff'),
+      url('../fonts/AkkuratCointreau-BoldItalic.ttf') format('truetype'),
+      url('../fonts/AkkuratCointreau-BoldItalic.svg#AkkuratCointreau-BoldItalic') format('svg');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Akkurat Cointreau';
+  src: url('../fonts/AkkuratCointreau-Bold.eot');
+  src: url('../fonts/AkkuratCointreau-Bold.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/AkkuratCointreau-Bold.woff2') format('woff2'),
+      url('../fonts/AkkuratCointreau-Bold.woff') format('woff'),
+      url('../fonts/AkkuratCointreau-Bold.ttf') format('truetype'),
+      url('../fonts/AkkuratCointreau-Bold.svg#AkkuratCointreau-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NimbusSanConD';
+  src: url('../fonts/NimbusSanConD-Bol.eot');
+  src: url('../fonts/NimbusSanConD-Bol.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/NimbusSanConD-Bol.woff2') format('woff2'),
+      url('../fonts/NimbusSanConD-Bol.woff') format('woff'),
+      url('../fonts/NimbusSanConD-Bol.ttf') format('truetype'),
+      url('../fonts/NimbusSanConD-Bol.svg#NimbusSanConD-Bol') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Akkurat Cointreau';
+  src: url('../fonts/AkkuratCointreau-Regular.eot');
+  src: url('../fonts/AkkuratCointreau-Regular.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/AkkuratCointreau-Regular.woff2') format('woff2'),
+      url('../fonts/AkkuratCointreau-Regular.woff') format('woff'),
+      url('../fonts/AkkuratCointreau-Regular.ttf') format('truetype'),
+      url('../fonts/AkkuratCointreau-Regular.svg#AkkuratCointreau-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body { font-family: 'Akkurat Cointreau', Arial, Helvetica, sans-serif; font-weight: normal; color: #454545; background-color: #FFFBF0; }
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 { font-family: 'NimbusSanConD', Arial, Helvetica, sans-serif; font-weight: bold; }
+
+a, a:hover { color: #C22E38; }
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active { background-color: #fff; color: #C22E38; }
+[class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link.active, [class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link.active:hover, [class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link.active:focus { background-color: rgba(255, 255, 255, 0.8); }
+
+[class*="sidebar-dark-"] { background-color: #C22E38; }
+
+.nav-sidebar .nav-item > .nav-link .right { transform: rotate(180deg); }
+.nav-sidebar .menu-open > .nav-link i.right, .nav-sidebar .menu-is-opening > .nav-link i.right { -webkit-transform: rotate(270deg); transform: rotate(270deg); }
+
+a.text-muted:hover { color: #C22E38 !important; }
+
+/* Button CSS */
+.btn { box-shadow: none !important; }
+.btn-outline-primary { color: #C22E38; border-color: #C22E38; }
+.btn-outline-primary:hover { background-color: #C22E38; border-color: #C22E38; }
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active, .show > .btn-outline-primary.dropdown-toggle { background-color: #C22E38; border-color: #C22E38; }
+
+.btn-secondary { background-color: #F5ECD6; border-color: #F5ECD6; color: #654334; }
+.btn-secondary:hover { background-color: #C22E38; border-color: #C22E38; }
+.btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active, .show > .btn-secondary.dropdown-toggle { background-color: #a1212a; border-color: #a1212a; }
+.btn-secondary:focus, .btn-secondary.focus { background-color: #a1212a; border-color: #a1212a; }
+div.dataTables_wrapper div.dt-buttons.btn-group div.btn-group:last-child { border-color: #F5ECD6; }
+
+.btn-success { background-color: #C22E38; border-color: #C22E38; }
+.btn-success:hover { background-color: #df3b0e; border-color: #df3b0e; }
+.btn-outline-success { color: #C22E38; border-color: #C22E38; }
+.btn-outline-success:hover { color: #fff; background-color: #C22E38; border-color: #C22E38; }
+.btn-success:focus, .btn-success.focus { background-color: #bd320c; border-color: #bd320c; box-shadow: 0 0 0 0.2rem rgba(255, 71, 19, 0.5); }
+.btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active, .show > .btn-success.dropdown-toggle { background-color: #bd320c; border-color: #bd320c; }
+.btn-success:not(:disabled):not(.disabled):active:focus, .btn-success:not(:disabled):not(.disabled).active:focus, .show > .btn-success.dropdown-toggle:focus { box-shadow: 0 0 0 0.2rem rgba(255, 71, 19, 0.5); }
+
+.btn-outline-success:focus, .btn-outline-success.focus { box-shadow: 0 0 0 0.2rem rgba(255, 71, 19, 0.5); }
+.btn-outline-success:not(:disabled):not(.disabled):active, .btn-outline-success:not(:disabled):not(.disabled).active, .show > .btn-outline-success.dropdown-toggle { background-color: #bd320c; border-color: #bd320c; }
+.btn-outline-success:not(:disabled):not(.disabled):active:focus, .btn-outline-success:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-success.dropdown-toggle:focus { box-shadow: 0 0 0 0.2rem rgba(255, 71, 19, 0.5); }
+ 
+[class*="sidebar-dark-"] .sidebar a,[class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link { color: #fff;}
+[class*="sidebar-dark"] .user-panel,[class*="sidebar-dark"] .brand-link { border-bottom: 1px solid rgba(255,255,255, 0.1);}
+
+.btn-outline-info {color: #454545; border-color: #454545; }
+.btn-outline-info:hover {color: #fff; border-color: #222; background-color: #222; }
+
+.page-link { color: #C22E38; box-shadow: none !important; }
+.page-link:hover { color: #C22E38; }
+.page-item.active .page-link { background-color: #C22E38; border-color: #C22E38; }
+
+
+
+/* Input */
+.form-control:focus { box-shadow: 0 0 0 0.2rem rgba(7, 44, 78, 0.25); }
+.select2-container--bootstrap4.select2-container--focus .select2-selection { box-shadow: 0 0 0 0.2rem rgba(7, 44, 78, 0.25); }
+
+footer.main-footer p {
+  color: #212529;
+}
+footer.main-footer .powered-text {
+  display: flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+.powered-text a {
+  display: block;
+  max-width: 70px;
+  margin: 0px 0 0 4px;
+  opacity: 0.5;
+  transition: 350ms all;
+}
+.powered-text a img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+.powered-text a:hover {
+  opacity: 1;
+}
+.sidebar .nav-link p {
+  font-size: 1rem;
+}
+
+td img.img-circle.img-size-32 {
+  height: 32px;
+}
+
+.buttons-columnVisibility span::before,  .buttons-columnVisibility span:after {
+  position: absolute;
+  content: "";
+  transition: all 200ms;
+}
+.buttons-columnVisibility span::before, .buttons-columnVisibility span::before {
+  left: 0;
+  border: 1px solid #e03973;
+}
+.buttons-columnVisibility span::before {
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: 1px solid rgba(108,117,125,0.5);
+  left: 12px;
+}
+.buttons-columnVisibility span::after {
+  content: '\2713';
+  font-size: 12px;
+  left: 17px;
+  top: 6px;
+  font-weight: 600;
+  color: #fff;
+  transform: scale(0);
+  opacity: 0;
+}
+.buttons-columnVisibility.active span::after {
+  transform: scale(1);
+  opacity: 1;
+  color: #6c757d;
+}
+.dropdown-item { position: relative; padding-left: 40px;}
+.dropdown-item.active, .dropdown-item:active {
+  color: #424548;
+  text-decoration: none;
+  background-color: #fff;
+}
+
+.sortable-list .fa-bars {
+  cursor:grab;
+}
+
+.sortable-list .fa-bars:active {
+  cursor:grabbing;
+}
+
+.sortable-list tr {
+  width:100%;
+}
+
+.small-box:hover .icon > i, .small-box:hover .icon > i.fa, .small-box:hover .icon > i.fas, .small-box:hover .icon > i.far, .small-box:hover .icon > i.fab, .small-box:hover .icon > i.fal, .small-box:hover .icon > i.fad, .small-box:hover .icon > i.ion {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}

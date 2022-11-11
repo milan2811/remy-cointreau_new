@@ -1,0 +1,27 @@
+[2022-09-22 10:17:41] local.DEBUG: message/  
+[2022-09-22 13:29:50] local.DEBUG: message/  
+[2022-09-22 13:44:29] local.DEBUG: message/  
+[2022-09-22 13:48:05] local.DEBUG: message/  
+[2022-09-22 13:48:53] local.DEBUG: message/  
+[2022-09-22 14:29:06] local.DEBUG: message/  
+[2022-09-22 14:30:16] local.DEBUG: messagehttp://64.4.160.99/remy-cointreau/login?otp-verification=1  
+[2022-09-22 14:33:45] local.DEBUG: messagehttp://64.4.160.99/remy-cointreau/login?otp-verification=1  
+[2022-09-22 14:33:50] local.DEBUG: messagehttp://64.4.160.99/remy-cointreau/login?otp-verification=1  
+[2022-09-22 14:34:03] local.DEBUG: messagehttp://64.4.160.99/remy-cointreau/login?otp-verification=1  
+[2022-09-22 14:54:08] local.ERROR: require(): read of 16789 bytes failed with errno=12 Cannot allocate memory {"exception":"[object] (ErrorException(code: 0): require(): read of 16789 bytes failed with errno=12 Cannot allocate memory at /home/admin/web/64.4.160.99/public_html/remy-cointreau/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:107)
+[stacktrace]
+#0 /home/admin/web/64.4.160.99/public_html/remy-cointreau/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError()
+#1 /home/admin/web/64.4.160.99/public_html/remy-cointreau/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(107): require()
+#2 /home/admin/web/64.4.160.99/public_html/remy-cointreau/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(108): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#3 /home/admin/web/64.4.160.99/public_html/remy-cointreau/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php(92): Illuminate\\Filesystem\\Filesystem->getRequire()
+#4 /home/admin/web/64.4.160.99/public_html/remy-cointreau/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php(55): Illuminate\\Foundation\\ProviderRepository->loadManifest()
+#5 /home/admin/web/64.4.160.99/public_html/remy-cointreau/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(659): Illuminate\\Foundation\\ProviderRepository->load()
+#6 /home/admin/web/64.4.160.99/public_html/remy-cointreau/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#7 /home/admin/web/64.4.160.99/public_html/remy-cointreau/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap()
+#8 /home/admin/web/64.4.160.99/public_html/remy-cointreau/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(153): Illuminate\\Foundation\\Application->bootstrapWith()
+#9 /home/admin/web/64.4.160.99/public_html/remy-cointreau/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(137): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#10 /home/admin/web/64.4.160.99/public_html/remy-cointreau/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(111): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter()
+#11 /home/admin/web/64.4.160.99/public_html/remy-cointreau/index.php(50): Illuminate\\Foundation\\Http\\Kernel->handle()
+#12 {main}
+"} 
+[2022-09-22 16:28:11] local.DEBUG: message/  
